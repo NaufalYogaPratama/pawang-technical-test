@@ -183,7 +183,7 @@ export const COURSES_DATA: Course[] = [
     id: 'bikin-konten-ai',
     slug: 'bikin-konten-ai',
     title: 'Bikin Konten dengan AI',
-    tagline: 'Caption, hook, script — tanpa kehilangan gaya kamu.',
+    tagline: 'Caption, hook, script, tetap dengan gayamu sendiri.',
     description: 'Cara membuat kalender konten, hook 3 detik, dan script video pendek yang tetap terasa manusiawi.',
     level: 'Menengah',
     categories: ['Menengah', 'Kreator'],

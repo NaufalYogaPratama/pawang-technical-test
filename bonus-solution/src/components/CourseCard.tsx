@@ -38,31 +38,31 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course, onOpenSyllabus }
       </div>
 
       {/* Content Area */}
-      <div className="flex flex-1 flex-col justify-between p-5">
-        <div>
-          <h3 className="text-lg font-bold text-slate-900 tracking-tight group-hover:text-[#069871] transition-colors">
-            {course.title}
-          </h3>
+      <div className="flex flex-1 flex-col p-5">
+        {/* Title: Consistent 1-line display with ellipsis if exceptionally long */}
+        <h3 className="text-base sm:text-lg font-bold text-slate-900 tracking-tight line-clamp-1 group-hover:text-[#069871] transition-colors">
+          {course.title}
+        </h3>
 
-          <p className="mt-2 text-sm text-slate-600 leading-relaxed line-clamp-2">
-            {course.tagline}
-          </p>
+        {/* Tagline: Fixed 2-line height box (min-h-[2.625rem]) so 1-line and 2-line descriptions never throw off the baseline */}
+        <p className="mt-1.5 text-sm text-slate-600 leading-relaxed line-clamp-2 min-h-[2.625rem]">
+          {course.tagline}
+        </p>
 
-          {/* Clean typographic metadata row, letting typography do the work without icon clutter */}
-          <div className="mt-4 flex items-center gap-2 text-xs text-slate-500">
-            <span className="inline-flex items-center gap-1.5 font-medium text-slate-700">
-              <span className={`h-2 w-2 rounded-full ${getLevelDot(course.level)}`} aria-hidden="true" />
-              {course.level}
-            </span>
-            <span className="text-slate-300" aria-hidden="true">·</span>
-            <span>{course.durationText}</span>
-            <span className="text-slate-300" aria-hidden="true">·</span>
-            <span>{course.lessonCount} lesson</span>
-          </div>
+        {/* Metadata row: Anchored consistently on the exact same horizontal baseline across every card */}
+        <div className="mt-4 pt-3 border-t border-slate-100 flex items-center gap-2 text-xs text-slate-500">
+          <span className="inline-flex items-center gap-1.5 font-medium text-slate-700">
+            <span className={`h-2 w-2 rounded-full ${getLevelDot(course.level)}`} aria-hidden="true" />
+            {course.level}
+          </span>
+          <span className="text-slate-300" aria-hidden="true">·</span>
+          <span>{course.durationText}</span>
+          <span className="text-slate-300" aria-hidden="true">·</span>
+          <span>{course.lessonCount} lesson</span>
         </div>
 
-        {/* Action Buttons: Fulfills open syllabus promise */}
-        <div className="mt-6 flex items-center gap-2.5 border-t border-slate-100 pt-4">
+        {/* Action Buttons: Pinned consistently below the metadata row */}
+        <div className="mt-4 flex items-center gap-2.5">
           <button
             type="button"
             onClick={() => onOpenSyllabus(course)}
