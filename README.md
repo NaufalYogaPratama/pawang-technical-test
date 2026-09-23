@@ -17,9 +17,9 @@ pawang-technical-test/
 │   └── 004-final-submission-assembly.md
 ├── bonus-solution/            # Kode komponen perbaikan (tugas bonus nomor 2)
 │   ├── src/
-│   │   ├── components/        # CourseCard, SyllabusModal, Navbar
+│   │   ├── components/        # CourseCard, SyllabusModal, Navbar, DifficultyBadge
 │   │   ├── data/              # Data kelas dari live site
-│   │   ├── App.tsx            # Katalog interaktif dan panel ringkasan audit
+│   │   ├── App.tsx            # Katalog interaktif
 │   │   └── App.test.tsx       # 6 unit test otomatis (Vitest dan Testing Library)
 │   ├── package.json
 │   └── vite.config.ts
@@ -37,6 +37,17 @@ pawang-technical-test/
 5. Gambar thumbnail di-fetch 1536px: Gambar kartu materi dipanggil pada resolusi 1536px kualitas 100% untuk kontainer selebar 350px tanpa atribut dimensi pada tag HTML.
 
 Catatan arsitektur: Live site saat ini berjalan di atas Nuxt 3 (Vue 3) dan Nitro di Vercel. Kode solusi pada bagian bonus disediakan dalam React dan TypeScript sesuai preferensi stack JavaScript tim.
+
+---
+
+## Fitur pada Kode Solusi (Bonus)
+
+Komponen di folder `bonus-solution/` mendemonstrasikan implementasi antarmuka yang menyelesaikan temuan audit di atas:
+- Pratinjau silabus transparan: Tombol "Tinjau Silabus" membuka modal berisi ringkasan, durasi, dan poin penting setiap materi tanpa terhalang gembok mati, menyelaraskan fungsi kelas dengan janji di beranda.
+- Indikator level non-warna (WCAG 1.4.1): Menggunakan ikon sinyal seluler tiga batang (Dasar 1 batang, Menengah 2 batang, Mahir 3 batang) agar tingkat kesulitan mudah dibedakan tanpa mengandalkan warna semata.
+- Kerapian ritme vertikal kartu: Deskripsi materi memiliki kotak tinggi konsisten dua baris dan penataan baris metadata seimbang dengan proteksi anti-wrap, menjaga kartu tetap sejajar rapi bahkan untuk durasi panjang seperti "1 jam 2 menit".
+- Optimasi gambar: Kontainer kartu menggunakan rasio aspek tetap `aspect-[16/10]`, `loading="lazy"`, dan `sizes` responsif untuk mencegah pergeseran tata letak (CLS = 0).
+- Standar aksesibilitas WCAG 2.1 AA: Navigasi keyboard penuh, pembaca layar ramah dengan label formulir eksplisit, dan tooltip penjelas rekor belajar.
 
 ---
 

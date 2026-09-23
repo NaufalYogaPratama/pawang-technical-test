@@ -110,8 +110,10 @@ Kode berada di direktori `bonus-solution/` dalam repository, dibangun dengan Rea
 Perbaikan yang diterapkan:
 1. Pratinjau silabus transparan: Setiap kartu kursus memiliki tombol "Tinjau Silabus". Pengguna non-IT dapat membuka ringkasan materi, poin penting yang dipelajari, dan estimasi waktu belajar setiap materi tanpa harus menyelesaikan materi sebelumnya terlebih dahulu. Ini menyelaraskan fungsi kelas dengan janji di beranda.
 2. Optimasi gambar: Kontainer kartu menggunakan rasio aspek tetap `aspect-[16/10]`, atribut `loading="lazy"`, `decoding="async"`, serta atribut `sizes` responsif untuk mencegah pengunduhan gambar 1536px pada kontainer kecil dan meniadakan pergeseran layout.
-3. Standar aksesibilitas WCAG 2.1 AA: Struktur heading rapi (H1 untuk halaman, H2 untuk bagian, H3 untuk kelas, H4 untuk materi), modal silabus dapat ditutup dengan tombol Escape, kolom pencarian memiliki label eksplisit untuk pembaca layar, dan indikator rekor belajar dilengkapi tooltip penjelas.
-4. Pengujian otomatis: Disertai 6 unit test di `src/App.test.tsx` yang mencakup pencarian, filter kategori, dan interaksi silabus. Seluruh pengujian lulus tanpa error.
+3. Indikator level non-warna (WCAG 1.4.1): Tingkat kesulitan tidak hanya dibedakan lewat warna teks, melainkan menggunakan ikon sinyal seluler tiga batang (Dasar 1 batang aktif, Menengah 2 batang, Mahir 3 batang) agar pengguna dengan keterbatasan persepsi warna tetap dapat membedakannya dengan jelas.
+4. Kerapian ritme vertikal kartu: Deskripsi materi menggunakan kotak tinggi konsisten dua baris (`min-h-[2.625rem]`), dan baris metadata ditata dalam satu baris seimbang kiri-kanan dengan proteksi `whitespace-nowrap`. Hal ini mencegah kartu meleber atau melompat beda ketinggian saat teks durasi lebih panjang seperti "1 jam 2 menit".
+5. Standar aksesibilitas WCAG 2.1 AA: Struktur heading rapi (H1 untuk halaman, H2 untuk bagian, H3 untuk kelas, H4 untuk materi), modal silabus dapat ditutup dengan tombol Escape, kolom pencarian memiliki label eksplisit untuk pembaca layar, dan indikator rekor belajar dilengkapi tooltip penjelas.
+6. Pengujian otomatis: Disertai 6 unit test di `src/App.test.tsx` yang mencakup pencarian, filter kategori, dan interaksi silabus. Seluruh pengujian lulus tanpa error.
 
 ---
 
