@@ -38,24 +38,19 @@ export const App: React.FC = () => {
 
       {/* Main Content Area */}
       <main className="flex-1 mx-auto w-full max-w-6xl px-4 sm:px-6 py-10">
-        {/* Header Section */}
-        <section className="mb-10">
-          <div className="max-w-2xl">
-            <span className="inline-block rounded-full bg-emerald-50 border border-emerald-200 px-3 py-1 text-xs font-semibold text-[#069871] mb-3">
-              Pawang AI · Kelas Praktik Bahasa Indonesia
-            </span>
-            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
-              Katalog Kelas AI Prompting
-            </h1>
-            <p className="mt-3 text-base text-slate-600 leading-relaxed">
-              Seluruh silabus terbuka sejak awal. Tinjau materi lebih dulu sebelum memutuskan untuk mengikuti, gratis dan tanpa perlu keahlian coding.
-            </p>
-          </div>
+        {/* Header Section: No AI eyebrow kicker, letting the heading speak directly */}
+        <section className="mb-10 max-w-2xl">
+          <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+            Katalog Kelas AI Prompting
+          </h1>
+          <p className="mt-3 text-base text-slate-600 leading-relaxed">
+            Seluruh silabus terbuka sejak awal. Tinjau materi lebih dulu sebelum memutuskan untuk mengikuti, gratis dan tanpa perlu keahlian coding.
+          </p>
         </section>
 
-        {/* Search & Filter Toolbar */}
+        {/* Search & Filter Toolbar: Structured segmented control instead of candy pill fatigue */}
         <section className="mb-8 space-y-4" aria-label="Pencarian dan Filter Kelas">
-          <div className="flex flex-col sm:flex-row gap-3">
+          <div className="flex flex-col md:flex-row gap-3">
             {/* Search Input with Explicit Accessible Label */}
             <div className="relative flex-1">
               <label htmlFor="search-course-input" className="sr-only">
@@ -68,13 +63,13 @@ export const App: React.FC = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Cari kelas: skripsi, tugas kantor, konten, draf..."
-                className="w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-10 pr-4 text-sm text-slate-900 placeholder:text-slate-400 shadow-sm outline-none focus:border-[#069871] focus:ring-2 focus:ring-[#069871]/20 transition-all"
+                className="w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-10 pr-4 text-sm text-slate-900 placeholder:text-slate-400 shadow-xs outline-none focus:border-[#069871] focus:ring-2 focus:ring-[#069871]/20 transition-all"
               />
             </div>
 
-            {/* Category Filter Pills */}
+            {/* Segmented Category Filter: Clean cohesive track, no loose pastel pills */}
             <div
-              className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none"
+              className="inline-flex flex-wrap items-center gap-1 rounded-xl border border-slate-200/80 bg-slate-100 p-1"
               role="tablist"
               aria-label="Kategori Kelas"
             >
@@ -87,10 +82,10 @@ export const App: React.FC = () => {
                     role="tab"
                     aria-selected={isSelected}
                     onClick={() => setSelectedCategory(cat)}
-                    className={`rounded-xl px-3.5 py-2 text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
+                    className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-all cursor-pointer ${
                       isSelected
-                        ? 'bg-[#069871] text-white shadow-sm'
-                        : 'border border-slate-200 bg-white text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                        ? 'bg-white text-slate-900 font-semibold shadow-xs'
+                        : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
                     }`}
                   >
                     {cat}
@@ -104,7 +99,7 @@ export const App: React.FC = () => {
         {/* Course Card Grid */}
         <section aria-label="Daftar Kelas">
           {filteredCourses.length === 0 ? (
-            <div className="rounded-2xl border border-slate-200 bg-white p-12 text-center shadow-sm">
+            <div className="rounded-2xl border border-slate-200 bg-white p-12 text-center shadow-xs">
               <p className="text-base font-semibold text-slate-900">Tidak ada kelas yang cocok dengan pencarianmu</p>
               <p className="mt-1 text-sm text-slate-500">Coba ubah kata kunci atau ganti filter kategori di atas.</p>
               <button
@@ -112,7 +107,7 @@ export const App: React.FC = () => {
                   setSelectedCategory('Semua');
                   setSearchQuery('');
                 }}
-                className="mt-4 inline-flex items-center gap-2 rounded-xl bg-slate-100 px-4 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-200 transition-colors cursor-pointer"
+                className="mt-4 inline-flex items-center gap-2 rounded-lg bg-slate-100 px-4 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-200 transition-colors cursor-pointer"
               >
                 Reset Pencarian
               </button>

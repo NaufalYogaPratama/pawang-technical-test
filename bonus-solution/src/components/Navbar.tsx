@@ -18,7 +18,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeNav, onNavChange }) => {
             href="/"
             className="flex items-center gap-2.5 rounded-lg p-1 outline-none focus-visible:ring-2 focus-visible:ring-[#069871]"
           >
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-[#069871] to-[#0bb184] text-white font-bold text-lg shadow-sm">
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-[#069871] to-[#0bb184] text-white font-bold text-lg shadow-xs">
               P
             </div>
             <span className="text-xl font-bold tracking-tight text-slate-900">
@@ -64,11 +64,11 @@ export const Navbar: React.FC<NavbarProps> = ({ activeNav, onNavChange }) => {
           </nav>
         </div>
 
-        {/* User Status & Login */}
-        <div className="flex items-center gap-4">
+        {/* User Status & Login: Integrated utility element without candy badge styling */}
+        <div className="flex items-center gap-3">
           <div className="relative">
             <div
-              className="flex items-center gap-3 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs text-slate-600 hover:border-slate-300 transition-colors cursor-pointer"
+              className="flex items-center gap-2 rounded-lg border border-slate-200/80 bg-slate-50 px-3 py-1.5 text-xs text-slate-600 hover:bg-slate-100 transition-colors cursor-pointer"
               onMouseEnter={() => setShowStreakTooltip(true)}
               onMouseLeave={() => setShowStreakTooltip(false)}
               onFocus={() => setShowStreakTooltip(true)}
@@ -81,7 +81,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeNav, onNavChange }) => {
                 <Flame className="h-3.5 w-3.5 fill-[#ea580c]" />
                 <span>0</span>
               </span>
-              <span className="h-3 w-px bg-slate-200" />
+              <span className="h-3 w-px bg-slate-300" aria-hidden="true" />
               <span className="flex items-center gap-1 font-semibold text-[#069871]">
                 <Star className="h-3.5 w-3.5 fill-[#069871]" />
                 <span>0</span>
@@ -92,7 +92,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeNav, onNavChange }) => {
             {showStreakTooltip && (
               <div
                 role="tooltip"
-                className="absolute right-0 top-full mt-2 w-64 rounded-xl border border-slate-200 bg-white p-3 text-xs text-slate-600 shadow-xl z-50 animate-in fade-in zoom-in-95 duration-150"
+                className="absolute right-0 top-full mt-2 w-64 rounded-xl border border-slate-200 bg-white p-3 text-xs text-slate-600 shadow-lg z-50 animate-in fade-in duration-100"
               >
                 <div className="font-semibold text-slate-900 mb-1">Rekor Belajar Harian</div>
                 <p className="text-slate-500 leading-relaxed">
@@ -104,7 +104,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeNav, onNavChange }) => {
 
           <a
             href="/login"
-            className="flex items-center gap-1.5 rounded-lg bg-[#069871] px-4 py-1.5 text-sm font-medium text-white shadow-sm hover:bg-[#057a5b] focus-visible:ring-2 focus-visible:ring-[#069871] transition-colors"
+            className="flex items-center gap-1.5 rounded-lg bg-[#069871] px-4 py-1.5 text-sm font-medium text-white shadow-xs hover:bg-[#057a5b] focus-visible:ring-2 focus-visible:ring-[#069871] transition-colors"
           >
             <LogIn className="h-4 w-4" />
             <span>Masuk</span>

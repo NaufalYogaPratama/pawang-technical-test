@@ -35,27 +35,27 @@ export const SyllabusModal: React.FC<SyllabusModalProps> = ({ course, onClose })
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-title"
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-900/60 backdrop-blur-xs animate-in fade-in duration-150"
     >
-      <div className="relative flex max-h-[90vh] w-full max-w-4xl flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl">
-        {/* Header */}
+      <div className="relative flex max-h-[90vh] w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl">
+        {/* Header: Clean typographic hierarchy, no floating decorative pills */}
         <div className="flex items-start justify-between border-b border-slate-100 p-6">
           <div>
-            <span className="inline-block text-xs font-semibold text-[#069871] mb-1">
+            <p className="text-xs font-semibold text-[#069871]">
               Silabus Terbuka (Tinjau Sebelum Mulai)
-            </span>
-            <h2 id="modal-title" className="text-xl font-bold text-slate-900 tracking-tight">
+            </p>
+            <h2 id="modal-title" className="text-xl font-bold text-slate-900 tracking-tight mt-1">
               {course.title}
             </h2>
-            <p className="mt-1 text-sm text-slate-600">{course.tagline}</p>
+            <p className="mt-1 text-sm text-slate-500">{course.tagline}</p>
           </div>
 
           <button
             onClick={onClose}
             aria-label="Tutup jendela silabus"
-            className="rounded-xl border border-slate-200 bg-slate-50 p-2 text-slate-500 hover:bg-slate-100 hover:text-slate-800 transition-colors cursor-pointer"
+            className="rounded-lg border border-slate-200 bg-slate-50 p-2 text-slate-500 hover:bg-slate-100 hover:text-slate-800 transition-colors cursor-pointer"
           >
-            <X className="h-5 w-5" />
+            <X className="h-4 w-4" />
           </button>
         </div>
 
@@ -63,7 +63,7 @@ export const SyllabusModal: React.FC<SyllabusModalProps> = ({ course, onClose })
         <div className="flex flex-1 flex-col md:flex-row overflow-hidden">
           {/* Left Column: Modules & Lessons */}
           <div className="w-full md:w-1/2 overflow-y-auto border-r border-slate-100 p-5 space-y-4 bg-slate-50/50">
-            <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+            <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">
               Daftar Modul & Materi
             </p>
 
@@ -71,15 +71,15 @@ export const SyllabusModal: React.FC<SyllabusModalProps> = ({ course, onClose })
               <p className="text-sm text-slate-500 italic py-4">Silabus kelas ini sedang disiapkan.</p>
             ) : (
               course.modules.map((module) => (
-                <div key={module.id} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-                  <div className="flex items-center gap-2.5 mb-3">
-                    <span className="flex h-5 w-5 items-center justify-center rounded-md bg-emerald-50 font-mono text-xs font-bold text-[#069871]">
+                <div key={module.id} className="rounded-xl border border-slate-200/80 bg-white p-4 shadow-xs">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="font-mono text-xs font-bold text-slate-400">
                       {module.moduleNumber}
                     </span>
-                    <h3 className="text-sm font-bold text-slate-900">{module.title}</h3>
+                    <h3 className="text-sm font-bold text-slate-800">{module.title}</h3>
                   </div>
 
-                  <div className="space-y-1.5 pl-2">
+                  <div className="space-y-1">
                     {module.lessons.map((lesson) => {
                       const isSelected = selectedLesson?.id === lesson.id;
                       return (
@@ -87,9 +87,9 @@ export const SyllabusModal: React.FC<SyllabusModalProps> = ({ course, onClose })
                           key={lesson.id}
                           type="button"
                           onClick={() => setSelectedLesson(lesson)}
-                          className={`flex w-full items-center justify-between rounded-xl px-3 py-2 text-left text-xs transition-all cursor-pointer ${
+                          className={`flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-xs transition-colors cursor-pointer ${
                             isSelected
-                              ? 'bg-emerald-50 text-[#069871] font-semibold border border-emerald-200'
+                              ? 'bg-emerald-50 text-[#069871] font-semibold'
                               : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
                           }`}
                         >
@@ -120,24 +120,22 @@ export const SyllabusModal: React.FC<SyllabusModalProps> = ({ course, onClose })
             )}
           </div>
 
-          {/* Right Column: Lesson Preview */}
+          {/* Right Column: Clean Lesson Preview */}
           <div className="w-full md:w-1/2 overflow-y-auto p-6 bg-white flex flex-col justify-between">
             {selectedLesson ? (
               <div className="space-y-5">
                 <div>
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1 text-[11px] font-semibold text-[#069871] border border-emerald-200 mb-2">
-                    <Eye className="h-3 w-3" />
-                    Pratinjau Materi Terbuka
-                  </span>
                   <h4 className="text-lg font-bold text-slate-900">{selectedLesson.title}</h4>
                   <div className="mt-1 flex items-center gap-2 text-xs text-slate-500">
-                    <Clock className="h-3.5 w-3.5" />
+                    <Clock className="h-3.5 w-3.5 text-slate-400" />
                     <span>Estimasi durasi baca: {selectedLesson.durationMinutes} menit</span>
+                    <span className="text-slate-300">·</span>
+                    <span className="text-[#069871] font-medium">Pratinjau Materi Terbuka</span>
                   </div>
                 </div>
 
-                <div className="rounded-xl border border-slate-100 bg-slate-50 p-4">
-                  <p className="text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">
+                <div className="rounded-xl border border-slate-100 bg-slate-50/80 p-4">
+                  <p className="text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">
                     Ringkasan Materi
                   </p>
                   <p className="text-sm text-slate-600 leading-relaxed">
@@ -146,7 +144,7 @@ export const SyllabusModal: React.FC<SyllabusModalProps> = ({ course, onClose })
                 </div>
 
                 <div>
-                  <p className="text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2.5">
+                  <p className="text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2.5">
                     Yang Akan Kamu Kuasai:
                   </p>
                   <ul className="space-y-2 text-xs text-slate-600">
@@ -172,7 +170,7 @@ export const SyllabusModal: React.FC<SyllabusModalProps> = ({ course, onClose })
               </div>
               <a
                 href={`/courses/${course.slug}`}
-                className="flex items-center gap-1.5 rounded-xl bg-[#069871] px-4 py-2 text-xs font-semibold text-white shadow-sm hover:bg-[#057a5b] transition-colors"
+                className="flex items-center gap-1.5 rounded-xl bg-[#069871] px-4 py-2 text-xs font-semibold text-white shadow-xs hover:bg-[#057a5b] transition-colors"
               >
                 <span>Buka Pelajaran</span>
                 <ArrowRight className="h-4 w-4" />
