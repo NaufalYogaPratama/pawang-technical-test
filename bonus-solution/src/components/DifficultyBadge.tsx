@@ -35,7 +35,7 @@ export const DifficultyBadge: React.FC<DifficultyBadgeProps> = ({ level }) => {
 
   return (
     <span
-      className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-semibold ${containerClass}`}
+      className={`inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-[11px] font-semibold whitespace-nowrap shrink-0 ${containerClass}`}
       aria-label={`Tingkat kesulitan: ${level}`}
     >
       {/* Cellular signal bars indicating difficulty level */}
